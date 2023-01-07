@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+    margin: 0;
+    padding: 0;
+    line-height: 2;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  .container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 0 5%;
+  }
+
+  .greeting {
+    position: relative; /* set the position of the container to relative */
+  }
+
+  .speech-bubble {
+    display:none;
+    position: absolute; /* position the bubble absolutely */
+    top: 50%; /* center vertically */
+    left: 25%; /* center horizontally */
+    transform: translate(-50%, 375%); /* offset the bubble by half its size */
+    background-color: white; /* white background */
+    border: 2px solid #333; /* dark border */
+    border-radius: 10px; /* round the corners */
+    padding-left: 10px;
+    padding-right: 10px;
+    box-shadow: 2px 2px 2px #999; /* add a shadow */
+  }
+  .speech-bubble.visible{
+    display:block;
+  }
+
+header {
+    margin-left: -12.5%; /* align left margin with text */
+    width: 125%;
+    background-color: #9da2c2; /* red background */
+    color: #ffffff; /* white text */
+    text-align: left;
+    font-size:54px;
+    font-weight: 800;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+
+  h1{
+    margin:0px;
+    margin-left: 10%;
+  }
+
+.reveal {
+    display: none;
+  }
+
+  .reveal.visible {
+    display: block;
+  }
+
+  .revealer:hover{
+    background-color: #70748c;
+  }
+
+  section{
+    margin-top:50px;
+    margin-bottom:50px;
+  }
+  
+  .revealer{
+    font-family:'Ubuntu';
+    line-height: 3;
+    border-radius: 10px;
+    background-color: #9da2c2; /* red background */
+    color: #ffffff;
+    width: 80%;
+    padding: 15px;
+    border-width: 5px;
+    border-style: inset;
+    text-decoration: none;
+  }
+
+
+
+  iframe {
+    overflow-clip-margin: content-box !important;
+    border-width: 3px;
+    border-style: inset;
+    border-color: initial;
+    border-image: initial;
+    overflow: clip !important;
+    margin: 20px;
+    margin-left: 0;
+}
+
+.aspect-ratio-16-9 {
+  position: relative;
+}
+
+.aspect-ratio-16-9::before {
+  content: "";
+  display: block;
+  padding-bottom: 48%;
+}
+
+.aspect-ratio-16-9 iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+form div {
+  display: inline-block;
+}
+
+iframe#carousel-iframe {
+    width: 100%;
+    height: 500px;
+    border: none;
+  }
+
+  .carousel {
+    display: none;
+  }
+
+.carousel.visible{ 
+    position: relative;
+    height: 50%;
+    display: flex;
+    overflow-x: hidden;
+  }
+
+  .carousel-inner {
+    display: flex;
+    transition: transform 0.5s;
+  }
+
+  .carousel-inner img {
+    width: 50%;
+    margin: 50px;
+    object-fit:scale-down;
+  }
+
+  .carousel-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  #prev-button {
+    left: 0;
+  }
+
+  #next-button {
+    right: 0;
+  }
+

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Static Website, Futureproof</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  
+  <div class="container">
+
+  <header><h1>Daniel Phillip</h1></header>
+  
+  <div class="greeting">
+    <img src="Images/me.JPG" alt="me and my dog" style="width: 20%; float: left; margin-right:50px; margin-top: 50px;">
+    <div class="speech-bubble">Nice to meet you, <name>!</div>
+  </div>
+
+  
+  <form id="myForm">
+    <h2>What's your name?</h2>
+    <div>
+      <label for="title" >Title:</label>
+      <input type="text" id="title" name="title" style="width:50px; margin-right:50px;">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name">
+    </div>
+  </form> 
+
+  <br>
+  <h2>About Me</h2>
+  <p>I graduated with a 2:1 in mathematics from Aberystwyth University in Wales. I have since been a teacher having lived in China for three years. I enjoy fixing things and I am a DIY enthusiast. When I say "I can make that"  it often creates mixed feelings for my girlfriend.</p>
+  <p>I am well suited to the field of software engineering and I enjoy the work. I am excited to tackle challenging problems and find it very satisfying learning how other people have solved similar problems. I am currently interested in machine learning algorithms and their potential for reshaping society. Furthemore I am keen to see how the web will change given new methods of searching and interacting with data.</p>
+
+  <h2>2 Truths, 1 Lie, but which is which?</h2>
+  <section>
+    <p><a href="#" class="revealer" data-reveal="statement-1">I have completed a video game using the Unity Engine.</a></p>
+    <p class="reveal" id="statement-1">
+      <b>This is true!</b><br> In fact I have completed a number of small game projects, I am currently working on "The Adventures of Portos". A 2D platformer inspired by
+      my slightly insane dog. Give it a try, this is the introductory chapter:<br>
+    
+      <iframe id="webgl_iframe" frameborder="0" allow="autoplay; fullscreen; vr" allowfullscreen="" allowvr="" mozallowfullscreen="true" src="https://play.unity.com/webgl/1a69331e-6635-4f09-94c7-ce4691007d66?screenshot=true&amp;userID=6381410958363901bced5a9d&amp;embedType=detail" width="1000" height="580" onmousewheel="" webkitallowfullscreen="true"></iframe>
+      <button id="mute-button">Mute</button><button id="reload-button" onclick="document.getElementById('webgl_iframe').src = document.getElementById('webgl_iframe').src"()">Reload</button></p>
+    <p><a href="#" class="revealer" data-reveal="statement-2">I have worked in software for a year.</a></p>
+    <p class="reveal" id="statement-2"> 
+      <b>This is the lie!</b><br>I am and have been looking for a job and would love to work on interesting problems, I would love to work in game, software or web development or even something more specific like virtual reality or machine learning and I believe now is a better time than ever to be learning to use new tools. </p>
+    <p><a href="#" class="revealer" data-reveal="statement-3">
+      I have completed software projects spanning web development, algorithm design and game development.</a></p>
+    <p class="reveal" id="statement-3">
+      <b>This is true!</b><br> I have worked on projects using many languages and I am becoming something of a generalist but I would love to develop my skills profesionally. You can browse some screenshots taken from projects on my github page below:<br>
+      <div class="carousel">
+        <div class="carousel-inner">
+          <img src="Images/numbabrot.png" alt="Image 1">
+          <img src="Images/SinWaveMapper.png" alt="Image 2">
+          <img src="Images/homepage.png" alt="Image 3">
+          <img src="Images/finance.png" alt="Image 4">
+          <img src="Images/match.png" alt="Image 5">
+          <img src="Images/boids.png" alt="Image 4">
+          <img src="Images/nourishment.png" alt="Image 5">
+        </div>
+        <div class="carousel-control" id="prev-button">&lt;</div>
+        <div class="carousel-control" id="next-button">&gt;</div>
+      </div>
+    </p>
+  </section>
+       
+</div>
+
+
+  <script>
+    // manage form input
+    const form = document.getElementById("myForm");
+    const bubble = document.querySelector(".speech-bubble");
+
+  form.oninput = function() {
+    // Get the values of the name and title inputs
+    const name = document.getElementById("name").value;
+    const title = document.getElementById("title").value;
+
+  // If name has a value, show the speech bubble
+  if (name) {
+    bubble.classList.toggle("visible", true);
+  } else {
+    bubble.classList.toggle("visible", false);
+  }
+
+  // Update the text of the speech bubble
+  bubble.textContent = `Nice to meet you, ${title} ${name}!`;
+}
+
+    // add mute button for embedded game
+    const iframe = document.getElementById("webgl_iframe");
+    const webglApp = iframe.contentWindow;
+    const muteButton = document.getElementById('mute-button');
+    let isMuted = true;
+
+    muteButton.addEventListener('click', () => {
+      isMuted = !isMuted;
+      webglApp.volume = isMuted ? 0 : 1;
+      muteButton.innerHTML = isMuted ? 'Unmute' : 'Mute';
+    });
+
+    //show/hide hidden response
+    const revealers = document.querySelectorAll('.revealer');
+    const carousel = document.querySelector('.carousel');
+    revealers.forEach(revealer => {
+      revealer.addEventListener('click', event => {
+        event.preventDefault();
+        const revealId = revealer.getAttribute('data-reveal');
+        const revealElement = document.getElementById(revealId);
+        revealElement.classList.toggle('visible');
+        revealElement.scrollIntoView();
+        if (revealId == "statement-3")
+        {
+        carousel.classList.toggle('visible');
+        carousel.scrollIntoView();
+        }
+      });
+
+    });
+
+    //manage carousel variables
+    const carouselInner = document.querySelector('.carousel-inner');
+    const prevButton = document.getElementById('prev-button');
+    const nextButton = document.getElementById('next-button')
+    let currentSlide = 0;
+    const slides = carouselInner.children;
+    let SLIDE_WIDTH; 
+    const NUM_SLIDES = slides.length;
+
+    carouselInner.style.transform = `translateX(-${currentSlide * SLIDE_WIDTH}px)`;
+    // turn carousel
+    prevButton.addEventListener('click', () => {
+      currentSlide = (currentSlide - 1 + NUM_SLIDES) % NUM_SLIDES;
+      //query width when clicked to overcome DOM loading
+      SLIDE_WIDTH = slides[currentSlide].offsetWidth;
+      carouselInner.style.transform = `translateX(-${currentSlide * SLIDE_WIDTH}px)`;
+    });
+    //turn carousel other direction
+    nextButton.addEventListener('click', () => {
+      currentSlide = (currentSlide + 1) % NUM_SLIDES;
+      SLIDE_WIDTH = slides[currentSlide].offsetWidth;
+      carouselInner.style.transform = `translateX(-${currentSlide * SLIDE_WIDTH}px)`;
+    });
+    </script>
+
+</body>
+</html>
