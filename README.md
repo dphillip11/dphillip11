@@ -1,7 +1,7 @@
 ### Hi, welcome to my github page.
 
 Currently I am working on a game engine. You can see a preliminary example in the [3D_Physics repository](https://github.com/dphillip11/3D_Physics/tree/master)
-. I am working on an ECS style registry in the [hashed_vector](https://github.com/dphillip11/Hashed_Vector_CPP) repository I will be implementing this into a more architecturally thorough game engine implemented via webGPU.
+. I am working on an ECS style registry in the [hashed_vector](https://github.com/dphillip11/Hashed_Vector_CPP) repository. I will be incorporating this into a more architecturally thorough game engine implemented via webGPU.
 
 * I have also worked on some shader coding https://www.shadertoy.com/view/ctBXDt.
 
