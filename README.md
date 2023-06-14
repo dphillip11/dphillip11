@@ -7,6 +7,6 @@ Currently I am working on a game engine. You can see a preliminary example in th
 
 * I have built some games and have more in the pipeline in Unity and Love2D https://play.unity.com/u/dphillip11.
 
-* You can also browse my repos to see some of the web development work I have done. If you want to collaborate, please get in touch. Further, if you want to offer me employment I will be over the moon to chat.
+* You can also browse my repos to see some of the web development work I have done. If you want to collaborate, please get in touch. 
 
-My email address is dphillip11@gmail.com.
+Further, if you want to offer me employment I will be over the moon to chat. My email address is dphillip11@gmail.com.
