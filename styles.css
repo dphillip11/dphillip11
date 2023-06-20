@@ -24,20 +24,38 @@ body {
 }
 
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     background-color: #333;
-    color: #fff;
-    padding: 10px 0;
-    text-align: center;
+    padding: 10px;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10%;
+    color: #f5f5f5;
 }
 
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 50%;
+}
 
 #skills {
 
     line-height: 2.5;
 }
 
+#skills li {
+    margin-right: 10px;
+    list-style: circle;
+    text-align: left;
+    text-indent: 30px;
+}
+
 nav ul {
-    list-style-type: none;
     padding: 0;
 }
 
@@ -57,10 +75,9 @@ nav ul li a:hover {
 }
 
 section {
-    padding: 40px 0;
     text-align: center;
-    margin-left: 150px;
-    margin-right: 150px;
+    margin-left: 100px;
+    margin-right: 100px;
 }
 
 section h1,
@@ -75,6 +92,7 @@ section p {
 }
 
 #about {
+    margin-top: 100px;
     display: flex;
     align-items: flex-start;
 }
@@ -82,26 +100,37 @@ section p {
 .about-content {
     display: flex;
     align-items: flex-start;
-    gap: 20px;
+    gap: 0px;
     /* Adjust the gap between the text and image as needed */
 }
 
 .about-text {
-    flex: 1;
-    text-align: right;
+    flex: 5 0;
+    text-align: left;
+    margin-right: 0px;
+    padding-right: 0px;
+}
+
+.about-text h1 {
+    text-align: center;
+    margin-right: 0px;
+    padding-right: 0px;
 }
 
 .about-image {
-    flex: 0 0 auto;
-    align-self: flex-start;
+    flex: 4 0 0;
+    margin-left: 0px;
+    padding-top: 100px;
 }
 
 .about-image img {
     width: 50%;
-    margin-left: 10px;
+    margin-left: 0px;
     /* Adjust the width of the image as needed */
     height: auto;
 }
+
+
 
 .project {
     background-color: #fff;
@@ -152,9 +181,10 @@ section p {
     /* Additional styling for the iframe wrapper */
 }
 
-webgl_iframe {
-    justify-self: center;
-    text-align: center;
+#webgl_iframe {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 80px;
 }
 
 .project-description {
@@ -201,7 +231,7 @@ a:hover {
     height: 315px;
     scroll-snap-align: start;
     margin-right: 10px;
-    overflow: hidden;
+    overflow: none;
 }
 
 .carousel-navigation {
