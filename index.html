@@ -1,147 +1,292 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Static Website, Futureproof</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="utf-8">
+    <title>Daniel Phillip</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  
-  <div class="container">
-
-  <header><h1>Daniel Phillip</h1></header>
-  
-  <div class="greeting">
-    <img src="https://drive.google.com/uc?export=view&id=1vMOJdb-o4fJZDNIKI3l7-iIMpIXTiBPM" alt="me and my dog" style="width: 20%; float: left; margin-right:50px; margin-top: 50px;">
-    <div class="speech-bubble">Nice to meet you, <name>!</div>
-  </div>
-
-  
-  <form id="myForm">
-    <h2>What's your name?</h2>
-    <div>
-      <label for="title" >Title:</label>
-      <input type="text" id="title" name="title" style="width:50px; margin-right:50px;">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name">
-    </div>
-  </form> 
-
-  <br>
-  <h2>About Me</h2>
-  <p>I graduated with a 2:1 in mathematics from Aberystwyth University in Wales. I have since been a teacher having lived in China for three years. I enjoy fixing things and I am a DIY enthusiast. When I say "I can make that"  it often creates mixed feelings for my girlfriend.</p>
-  <p>I am well suited to the field of software engineering and I enjoy the work. I am excited to tackle challenging problems and find it very satisfying learning how other people have solved similar problems. I am currently interested in machine learning algorithms and their potential for reshaping society. Furthemore I am keen to see how the web will change given new methods of searching and interacting with data.</p>
-
-  <h2>2 Truths, 1 Lie, but which is which?</h2>
-  <section>
-    <p><a href="#" class="revealer" data-reveal="statement-1">I have completed a video game using the Unity Engine.</a></p>
-    <p class="reveal" id="statement-1">
-      <b>This is true!</b><br> In fact I have completed a number of small game projects, I am currently working on "The Adventures of Portos". A 2D platformer inspired by
-      my slightly insane dog. Give it a try, this is the introductory chapter:<br>
-    
-      <iframe id="webgl_iframe" frameborder="0" allow="autoplay; fullscreen; vr" allowfullscreen="" allowvr="" mozallowfullscreen="true" src="https://play.unity.com/webgl/1a69331e-6635-4f09-94c7-ce4691007d66?screenshot=true&amp;userID=6381410958363901bced5a9d&amp;embedType=detail" width="1000" height="580" onmousewheel="" webkitallowfullscreen="true"></iframe>
-      <button id="mute-button">Mute</button><button id="reload-button" onclick="document.getElementById('webgl_iframe').src = document.getElementById('webgl_iframe').src"()">Reload</button></p>
-    <p><a href="#" class="revealer" data-reveal="statement-2">I have worked in software for a year.</a></p>
-    <p class="reveal" id="statement-2"> 
-      <b>This is the lie!</b><br>I am and have been looking for a job and would love to work on interesting problems, I would love to work in game, software or web development or even something more specific like virtual reality or machine learning and I believe now is a better time than ever to be learning to use new tools. </p>
-    <p><a href="#" class="revealer" data-reveal="statement-3">
-      I have completed software projects spanning web development, algorithm design and game development.</a></p>
-    <p class="reveal" id="statement-3">
-      <b>This is true!</b><br> I have worked on projects using many languages and I am becoming something of a generalist but I would love to develop my skills profesionally. You can browse some screenshots taken from projects on my github page below:<br>
-      <div class="carousel">
-        <div class="carousel-inner">
-          <img src="https://drive.google.com/uc?export=view&id=1rCOqJ2S2uyh4T5mNrepPMpb4lSx8NCOn" alt="homepage">
-          <img src="https://drive.google.com/uc?export=view&id=1ZiQUsnIoWFmG4cRdDxD06tGGbTC4nWFm" alt="numbabrot">
-          <img src="https://drive.google.com/uc?export=view&id=1tCFIyPgYdiYYWL_76XzN3BW0iUIDNgGN" alt="colormapper">
-          <img src="https://drive.google.com/uc?export=view&id=1Oijjp3LNZkBduBuRTk09DYeFLcS2pCTu" alt="nourishment">
-          <img src="https://drive.google.com/uc?export=view&id=1-gaAVSGFA_CKdljYZWlr-3kOO7x02bz1" alt="match">
-          <img src="https://drive.google.com/uc?export=view&id=12hjcBx6oZLm1dO9rhuR9DfWzDfrLTd2F" alt="boids">
-          <img src="https://drive.google.com/uc?export=view&id=1Mtoj9laOkorUad6uh65r2jd5nrkpJnn8" alt="stockTrader">
+    <header>
+        <h1>Daniel Phillip</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="about">
+        <div class="about-content">
+            <div class="about-text">
+                <h1>About Me</h1>
+                <p>
+                    Hello! My journey in programming started during my maths degree, when I began to leverage Python to
+                    interpret
+                    and display data. Intrigued by the power and potential of programming, I enrolled in the CS50x
+                    course.
+                    This
+                    immersive experience not only deepened my understanding but also sparked an enduring enthusiasm for
+                    coding.
+                </p>
+                <p>
+                    Since then, I've worked on diverse projects spanning web development, game development, and software
+                    creation,
+                    harnessing a range of languages such as C, C++, C#, Python, JavaScript and Lua. I have also gained
+                    expertise in
+                    graphics
+                    programming with OpenGL and GLSL, developed games using Love2D and Unity, and honed my skills in
+                    Object-Oriented
+                    Programming (OOP).
+                </p>
+                <p>
+                    My exploration of the coding world didn't stop there. I delved into data-oriented programming and
+                    discovered new
+                    ways to structure and interact with data. Currently, my primary language is C++, and I am
+                    continuously
+                    updating
+                    my knowledge as new features are introduced. I regularly follow programming conferences such as
+                    CppCon
+                    to stay
+                    abreast of best practices and innovations in the field.
+                </p>
+                <p>
+                    Programming, for me, is a journey of continuous learning, and I am excited to apply my skills to new
+                    challenges.
+                </p>
+            </div>
+            <div class="about-image">
+                <img src="Assets/Daniel.JPG" alt="Profile Image">
+            </div>
         </div>
-        <div class="carousel-control" id="prev-button">&lt;</div>
-        <div class="carousel-control" id="next-button">&gt;</div>
-      </div>
-    </p>
-  </section>
-       
-</div>
+    </section>
+    <section id="skills">
+        <h1>Skills</h1>
+        <ul>
+            <li>Strong foundation in mathematics, including calculus, linear algebra, trigonometry, vectors, and
+                matrices</li>
+            <li>Proficient in C, C++, C#, Python, and Lua</li>
+            <li>Web development experience with Django, Flask, and React</li>
+            <li>Developing a game engine using C++ and OpenGL, with features such as Entity Component System (ECS), GUI,
+                3D
+                physics, OBJ loading and rendering</li>
+            <li>Experienced in graphics programming with OpenGL and GLSL</li>
+            <li>Game development experience with Love2D, Unity, and the GD50 Game Development course</li>
+            <li>Understanding and application of Object-Oriented Programming (OOP) and data-oriented programming</li>
+            <li>Experienced in the use of SQLite and ORM in Django</li>
+            <li>Regular use of Git for version control, with multiple projects publicly accessible</li>
+            <li>Practices Test-Driven Development (TDD), with experience in unit testing</li>
+            <li>Ability to interpret and visualize data using Python</li>
+            <li>Continual learner, regularly updating knowledge with C++ new features and coding best practices</li>
+            <li>Experience in developing software applications</li>
+            <li>Familiarity with performance profiling across multiple threads in C++ using Visual Studio</li>
+            <li>CS50X certificate and Programming with Python certificate holder</li>
+        </ul>
+    </section>
 
-
-  <script>
-    // manage form input
-    const form = document.getElementById("myForm");
-    const bubble = document.querySelector(".speech-bubble");
-
-  form.oninput = function() {
-    // Get the values of the name and title inputs
-    const name = document.getElementById("name").value;
-    const title = document.getElementById("title").value;
-
-  // If name has a value, show the speech bubble
-  if (name) {
-    bubble.classList.toggle("visible", true);
-  } else {
-    bubble.classList.toggle("visible", false);
-  }
-
-  // Update the text of the speech bubble
-  bubble.textContent = `Nice to meet you, ${title} ${name}!`;
-}
-
-    // add mute button for embedded game
-    const iframe = document.getElementById("webgl_iframe");
-    const webglApp = iframe.contentWindow;
-    const muteButton = document.getElementById('mute-button');
-    let isMuted = true;
-
-    muteButton.addEventListener('click', () => {
-      isMuted = !isMuted;
-      webglApp.volume = isMuted ? 0 : 1;
-      muteButton.innerHTML = isMuted ? 'Unmute' : 'Mute';
-    });
-
-    //show/hide hidden response
-    const revealers = document.querySelectorAll('.revealer');
-    const carousel = document.querySelector('.carousel');
-    revealers.forEach(revealer => {
-      revealer.addEventListener('click', event => {
-        event.preventDefault();
-        const revealId = revealer.getAttribute('data-reveal');
-        const revealElement = document.getElementById(revealId);
-        revealElement.classList.toggle('visible');
-        revealElement.scrollIntoView();
-        if (revealId == "statement-3")
-        {
-        carousel.classList.toggle('visible');
-        carousel.scrollIntoView();
-        }
-      });
-
-    });
-
-    //manage carousel variables
-    const carouselInner = document.querySelector('.carousel-inner');
-    const prevButton = document.getElementById('prev-button');
-    const nextButton = document.getElementById('next-button')
-    let currentSlide = 0;
-    const slides = carouselInner.children;
-    let SLIDE_WIDTH; 
-    const NUM_SLIDES = slides.length;
-
-    carouselInner.style.transform = `translateX(-${currentSlide * SLIDE_WIDTH}px)`;
-    // turn carousel
-    prevButton.addEventListener('click', () => {
-      currentSlide = (currentSlide - 1 + NUM_SLIDES) % NUM_SLIDES;
-      //query width when clicked to overcome DOM loading
-      SLIDE_WIDTH = slides[currentSlide].offsetWidth;
-      carouselInner.style.transform = `translateX(-${currentSlide * SLIDE_WIDTH}px)`;
-    });
-    //turn carousel other direction
-    nextButton.addEventListener('click', () => {
-      currentSlide = (currentSlide + 1) % NUM_SLIDES;
-      SLIDE_WIDTH = slides[currentSlide].offsetWidth;
-      carouselInner.style.transform = `translateX(-${currentSlide * SLIDE_WIDTH}px)`;
-    });
-    </script>
-
+    <section id="projects">
+        <h1>Projects</h1>
+        <div class="project">
+            <h2 class="project-name">Newton's Cradle<span class="dropdown-arrow">▼</span></h2>
+            <div class="dropdown-content">
+                <div class="iframe-wrapper">
+                    <iframe src="Projects/newton.html" frameborder="0" width="100%" height="400px"></iframe>
+                </div>
+                <div class="project-description">
+                    <h3>Description:</h3>
+                    <p>
+                        The Newton's Cradle Simulation is a web-based interactive simulation of the famous physics
+                        experiment
+                        known as Newton's Cradle. The simulation is built using HTML, CSS, and WebGL with the help of
+                        JavaScript.
+                    </p>
+                    <p>
+                        The webpage features a visually appealing interface where a virtual Newton's Cradle is
+                        displayed. The
+                        simulation utilizes a canvas element to render the 3D environment. The balls and supporting
+                        frames are
+                        created using WebGL and are dynamically positioned within the scene.
+                    </p>
+                    <p>
+                        The user can interact with the simulation in several ways. Firstly, the camera can be controlled
+                        using
+                        the arrow keys, allowing the user to navigate around the virtual environment and observe the
+                        physics
+                        simulation from different angles. Additionally, the scroll wheel can be used to zoom in and out
+                        of the
+                        scene, providing a closer look at the objects.
+                    </p>
+                    <p>
+                        The simulation accurately replicates the behavior of the physical Newton's Cradle. The balls
+                        swing back
+                        and forth, demonstrating the principles of conservation of momentum and energy. The physics
+                        calculations
+                        are performed in real-time, allowing for a realistic and interactive experience.
+                    </p>
+                    <p>
+                        To enhance the user experience, an information button is provided, which, when clicked, displays
+                        a modal
+                        with instructions on how to interact with the simulation. This provides users with guidance on
+                        using the
+                        arrow keys for camera control and scroll wheel for zooming.
+                    </p>
+                    <p>
+                        The project demonstrates proficiency in web development technologies such as HTML, CSS, and
+                        JavaScript.
+                        It leverages WebGL and the canvas element to create a visually engaging and interactive 3D
+                        simulation.
+                        The implementation showcases the ability to handle user input for camera control and provides
+                        clear
+                        instructions to enhance usability.
+                    </p>
+                    <p>
+                        By exploring and interacting with the simulation, users can deepen their understanding of
+                        fundamental
+                        physics concepts while enjoying an immersive and educational experience.
+                    </p>
+                    <p>
+                        Overall, the Newton's Cradle Simulation project combines creativity, technical skill, and
+                        educational
+                        value to deliver an engaging web-based simulation.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="project">
+            <h2 class="project-name">Mandelbrot Visualisation<span class="dropdown-arrow">▼</span></h2>
+            <div class="dropdown-content">
+                <div class="iframe-wrapper">
+                    <iframe src="Projects/mandelbrot.html" frameborder="0" width="100%" height="400px"></iframe>
+                </div>
+                <div class="project-description">
+                    <h3>Description:</h3>
+                    <p>
+                        The Mandelbrot Visualisation project is a web-based interactive visualisation of the famous
+                        Mandelbrot
+                        set. The visualisation is implemented using WebGL and JavaScript to provide a dynamic and
+                        immersive
+                        experience.
+                    </p>
+                    <p>
+                        The webpage consists of a canvas element where the Mandelbrot set is rendered. The canvas is
+                        dynamically
+                        sized to fit the viewport and maintains responsiveness when the window is resized. The
+                        visualisation
+                        allows users to explore different regions of the Mandelbrot set by panning and zooming.
+                    </p>
+                    <p>
+                        Users can interact with the visualisation using various input methods. The scroll wheel can be
+                        used to
+                        zoom in and out of the Mandelbrot set, allowing users to explore intricate details. The arrow
+                        keys
+                        enable panning, allowing users to navigate through the set and focus on specific areas of
+                        interest.
+                    </p>
+                    <p>
+                        The project also includes a color range slider that allows users to change the color scheme of
+                        the
+                        visualisation. The color range slider modifies the hues used to represent different areas of the
+                        Mandelbrot set, offering a customizable visual experience.
+                    </p>
+                    <p>
+                        Additionally, an information button is provided to display a modal with instructions on how to
+                        interact
+                        with the visualisation. The modal provides guidance on using the scroll wheel for zooming, arrow
+                        keys
+                        for panning, and the color range slider for modifying the color scheme.
+                    </p>
+                    <p>
+                        The Mandelbrot Visualisation project showcases proficiency in WebGL and JavaScript, utilizing
+                        shaders
+                        and dynamic rendering techniques to create a visually stunning and interactive experience. The
+                        implementation offers flexibility for exploration and customization, fostering engagement and
+                        learning.
+                    </p>
+                    <p>
+                        By exploring the Mandelbrot set through this visualisation, users can gain a deeper
+                        understanding of
+                        fractal geometry and the intricate patterns within the set.
+                    </p>
+                    <p>
+                        Overall, the Mandelbrot Visualisation project combines artistic aesthetics, technical skill, and
+                        educational value to deliver an immersive and captivating web-based visualisation.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="project">
+            <h2 class="project-name">Game Engine<span class="dropdown-arrow">▼</span></h2>
+            <div class="dropdown-content">
+                <div class="iframe-wrapper">
+                    <iframe width="100%" height="400px" src="https://www.youtube.com/embed/kZ6ezt4bB-s" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="project-description">
+                    <h3>Description:</h3>
+                    <p>
+                        The Game Engine project is a comprehensive game development framework that enables the creation
+                        of
+                        high-quality games. Developed using C++ and OpenGL, the engine provides features such as
+                        entity
+                        component system (ECS), GUI, 3D physics, and OBJ loading and rendering. It offers a powerful
+                        and
+                        flexible platform for game developers to bring their ideas to life.
+                    </p>
+                    <!-- Description continues... -->
+                </div>
+                <div class="iframe-wrapper">
+                    <iframe width="100%" height="400px" src="https://www.youtube.com/embed/LdWEugD0k1E" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="game-development">
+        <h1>Game Development</h1>
+        <div class="video-carousel">
+            <div class="video-frame">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/sblFx198LTI" frameborder="0"
+                    allowfullscreen></iframe>
+            </div>
+            <div class="video-frame">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/bb6bb0ZMqnI" frameborder="0"
+                    allowfullscreen></iframe>
+            </div>
+            <div class="video-frame">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/ms9gQ040WoQ" frameborder="0"
+                    allowfullscreen></iframe>
+            </div>
+            <div class="video-frame">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/6IH29HmjRYk" frameborder="0"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+        <!-- <div class="carousel-navigation">
+            <button class="prev-button">&#8249;</button>
+            <button class="next-button">&#8250;</button>
+        </div> -->
+    </section>
+    <iframe id="webgl_iframe" frameborder="0" allow="autoplay; fullscreen; vr" allowfullscreen="" allowvr=""
+        mozallowfullscreen="true"
+        src="https://play.unity.com/webgl/1a69331e-6635-4f09-94c7-ce4691007d66?screenshot=true&amp;userID=6381410958363901bced5a9d&amp;embedType=detail"
+        width="1000" height="580" onmousewheel="" webkitallowfullscreen="true"></iframe>
+    <button id="mute-button">Mute</button><button id="reload-button"
+        onclick="document.getElementById('webgl_iframe').src = document.getElementById('webgl_iframe').src"
+        ()">Reload</button></p>
+    <section id="contact">
+        <h1>Contact Me</h1>
+        <p>Want to get in touch? Send me an email at <a href="mailto:dphillip11@gmail.com">dphillip11@gmail.com</a>.
+        </p>
+    </section>
+    <footer>
+        <p>© 2023 Daniel Phillip</p>
+    </footer>
+    <script src="scripts.js"></script>
 </body>
+
 </html>
