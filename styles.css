@@ -181,11 +181,23 @@ section p {
     /* Additional styling for the iframe wrapper */
 }
 
-#webgl_iframe {
-    width: 80%;
-    margin-left: 10%;
-    margin-top: 80px;
+#unity-section {
+    position: center;
+    width: 100%;
 }
+
+#unity-iframe {
+    position: center;
+    left: 10%;
+    width: 80%;
+
+}
+
+#unity {
+    padding: 100px;
+}
+
+
 
 .project-description {
     color: #666;
@@ -269,4 +281,51 @@ a:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.carousel-container {
+    width: 400px;
+    height: 300px;
+    position: relative;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: gray;
+    white-space: nowrap;
+}
+
+.carousel-nav-item {
+    margin: 0 5px;
+}
+
+.carousel-nav-item img {
+    width: 60px;
+    height: 40px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.carousel-nav-item img:hover {
+    transform: scale(1.2);
 }

@@ -59,25 +59,30 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-const prevButton = document.querySelector('.prev-button');
-const nextButton = document.querySelector('.next-button');
-const videoCarousel = document.querySelector('.video-carousel');
 
-prevButton.addEventListener('click', () => {
-  videoCarousel.scrollBy({
-    left: -600,
-    behavior: 'smooth'
-  });
-});
+ const carouselContainer = document.querySelector('.carousel-container');
+        const carouselImage = document.getElementById('carousel-image');
+        const carouselImages = document.querySelectorAll('.carousel-nav-item img');
+        let currentIndex = 0;
 
-nextButton.addEventListener('click', () => {
-  videoCarousel.scrollBy({
-    left: 600,
-    behavior: 'smooth'
-  });
-});
+        function handleNext() {
+            currentIndex = (currentIndex + 1) % carouselImages.length;
+            carouselImage.src = carouselImages[currentIndex].src;
+}
+        function changeImage(e) {
+            handleNext();
+            const targetImageSrc = e.target.src;
+            carouselImage.src = targetImageSrc;
+        }
 
+        function handlePrev() {
+            currentIndex = (currentIndex - 1 + carouselImages.length) % carouselImages.length;
+            carouselImage.src = carouselImages[currentIndex].src;
+        }
 
+        carouselImages.forEach(image => {
+            image.addEventListener('mouseover', changeImage);
+        });
 
 
 
