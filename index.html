@@ -104,61 +104,19 @@
                     <iframe src="Projects/newton.html" frameborder="0" width="100%" height="400px"></iframe>
                 </div>
                 <div class="project-description">
-                    <h3>Description:</h3>
                     <p>
-                        The Newton's Cradle Simulation is a web-based interactive simulation of the famous physics
-                        experiment
-                        known as Newton's Cradle. The simulation is built using HTML, CSS, and WebGL with the help of
-                        JavaScript.
+                        After discovering the wonderful world of shaders and graphics programming, I couldn't help but
+                        create a raytraced version of Newton's Cradle. All the geometry is modelled using ray
+                        intersections and the reflections are exact, this is suitable for such a reflective scene. The
+                        scene is rendered using a raytracing algorithm, which is implemented in GLSL. The scene is
+                        rendered in real-time, allowing for an interactive experience. The user can control the camera
+                        using the arrow keys and zoom in and out using the scroll wheel.
                     </p>
                     <p>
-                        The webpage features a visually appealing interface where a virtual Newton's Cradle is
-                        displayed. The
-                        simulation utilizes a canvas element to render the 3D environment. The balls and supporting
-                        frames are
-                        created using WebGL and are dynamically positioned within the scene.
-                    </p>
-                    <p>
-                        The user can interact with the simulation in several ways. Firstly, the camera can be controlled
-                        using
-                        the arrow keys, allowing the user to navigate around the virtual environment and observe the
-                        physics
-                        simulation from different angles. Additionally, the scroll wheel can be used to zoom in and out
-                        of the
-                        scene, providing a closer look at the objects.
-                    </p>
-                    <p>
-                        The simulation accurately replicates the behavior of the physical Newton's Cradle. The balls
-                        swing back
-                        and forth, demonstrating the principles of conservation of momentum and energy. The physics
-                        calculations
-                        are performed in real-time, allowing for a realistic and interactive experience.
-                    </p>
-                    <p>
-                        To enhance the user experience, an information button is provided, which, when clicked, displays
-                        a modal
-                        with instructions on how to interact with the simulation. This provides users with guidance on
-                        using the
-                        arrow keys for camera control and scroll wheel for zooming.
-                    </p>
-                    <p>
-                        The project demonstrates proficiency in web development technologies such as HTML, CSS, and
-                        JavaScript.
-                        It leverages WebGL and the canvas element to create a visually engaging and interactive 3D
-                        simulation.
-                        The implementation showcases the ability to handle user input for camera control and provides
-                        clear
-                        instructions to enhance usability.
-                    </p>
-                    <p>
-                        By exploring and interacting with the simulation, users can deepen their understanding of
-                        fundamental
-                        physics concepts while enjoying an immersive and educational experience.
-                    </p>
-                    <p>
-                        Overall, the Newton's Cradle Simulation project combines creativity, technical skill, and
-                        educational
-                        value to deliver an engaging web-based simulation.
+                        The obvious benefit of using shaders and in the example WebGL is that it can be loaded directly
+                        from an html file and run in the browser, furthermore the size of the image is dictated by
+                        client and not file size, in fact, the code necessary to create it is only a few hundred lines
+                        of text. I will be learning WebGPU as this seems to be the future of web based graphics APIs.
                     </p>
                 </div>
             </div>
@@ -172,55 +130,16 @@
                 <div class="project-description">
                     <h3>Description:</h3>
                     <p>
-                        The Mandelbrot Visualisation project is a web-based interactive visualisation of the famous
-                        Mandelbrot
-                        set. The visualisation is implemented using WebGL and JavaScript to provide a dynamic and
-                        immersive
-                        experience.
+                        Although I have used webGl to give a demo in the browser, my work on Mandelbrot visualisation
+                        mostly took place on the CPU using Python and C. I implemented a variety of methods for
+                        rendering the M-set with varying degrees of efficiency. WebGl is limited in terms of floating
+                        point accuracy which certainly is not the case for many of the other implementations.
                     </p>
                     <p>
-                        The webpage consists of a canvas element where the Mandelbrot set is rendered. The canvas is
-                        dynamically
-                        sized to fit the viewport and maintains responsiveness when the window is resized. The
-                        visualisation
-                        allows users to explore different regions of the Mandelbrot set by panning and zooming.
-                    </p>
-                    <p>
-                        Users can interact with the visualisation using various input methods. The scroll wheel can be
-                        used to
-                        zoom in and out of the Mandelbrot set, allowing users to explore intricate details. The arrow
-                        keys
-                        enable panning, allowing users to navigate through the set and focus on specific areas of
-                        interest.
-                    </p>
-                    <p>
-                        The project also includes a color range slider that allows users to change the color scheme of
-                        the
-                        visualisation. The color range slider modifies the hues used to represent different areas of the
-                        Mandelbrot set, offering a customizable visual experience.
-                    </p>
-                    <p>
-                        Additionally, an information button is provided to display a modal with instructions on how to
-                        interact
-                        with the visualisation. The modal provides guidance on using the scroll wheel for zooming, arrow
-                        keys
-                        for panning, and the color range slider for modifying the color scheme.
-                    </p>
-                    <p>
-                        The Mandelbrot Visualisation project showcases proficiency in WebGL and JavaScript, utilizing
-                        shaders
-                        and dynamic rendering techniques to create a visually stunning and interactive experience. The
-                        implementation offers flexibility for exploration and customization, fostering engagement and
-                        learning.
-                    </p>
-                    <p>
-                        By exploring the Mandelbrot set through this visualisation, users can gain a deeper
-                        understanding of
-                        fractal geometry and the intricate patterns within the set.
-                    </p>
-                    <p>
-                        Overall, the Mandelbrot Visualisation project combines artistic aesthetics, technical skill, and
-                        educational value to deliver an immersive and captivating web-based visualisation.
+                        C was of course an excellent language for outputting still images and I actually used
+                        convolutional edge detection to automate this so that I could generate many images at increasing
+                        levels of zoom. Python initially seemed a little lethargic but withe the help of the Numba
+                        library and the use of the JIT compiler I was able to fare much better.
                     </p>
                 </div>
             </div>
@@ -244,7 +163,7 @@
                         and
                         flexible platform for game developers to bring their ideas to life.
                     </p>
-                    <!-- Description continues... -->
+
                 </div>
                 <div class="iframe-wrapper">
                     <iframe width="100%" height="400px" src="https://www.youtube.com/embed/LdWEugD0k1E" frameborder="0"
@@ -253,118 +172,130 @@
                 </div>
             </div>
         </div>
-    </section>
-    <section id="game-development">
-        <h1>Game Development</h1>
-        <p>
-            I have really enjoyed recreating classic games and developing my own games. I have used a variety of tools
-            including Unity, Love2D and even Scratch. I quickly discovered that although making games is fun, graphical
-            rendering and physics engines might be where the real excitement is at. Imagine the thrill of implementing
-            an algorithm you have read about or converting formulae to code or the joy of eeking out every millisecond
-            of performance. I am currently working on my own game engine and I am excited to see where it takes me.
-        </p>
-        <div class="video-carousel">
-            <div class="video-frame">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/sblFx198LTI" frameborder="0"
-                    allowfullscreen></iframe>
-            </div>
-            <div class="video-frame">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/bb6bb0ZMqnI" frameborder="0"
-                    allowfullscreen></iframe>
-            </div>
-            <div class="video-frame">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/ms9gQ040WoQ" frameborder="0"
-                    allowfullscreen></iframe>
-            </div>
-            <div class="video-frame">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/6IH29HmjRYk" frameborder="0"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
-        <!-- <div class="carousel-navigation">
-            <button class="prev-button">&#8249;</button>
-            <button class="next-button">&#8250;</button>
-        </div> -->
-    </section>
-    <section id="unity">
-        <h1>Check out some of my experiments in Unity</h1>
-        <div id="unity-section">
-            <iframe id="unity-iframe"
-                src="https://play.unity.com/webgl/1a69331e-6635-4f09-94c7-ce4691007d66?screenshot=true&amp;userID=6381410958363901bced5a9d&amp;embedType=detail"
-                frameborder="0" allow="autoplay; fullscreen; vr" allowfullscreen="" allowvr="" mozallowfullscreen="true"
-                width="1000" height="580" onmousewheel="" webkitallowfullscreen="true"></iframe>
-        </div>
-        <div class="carousel">
-            <div class="carousel-container">
-                <a href="https://play.unity.com/p/63d90002c774962608d85609">
-                    <img class="carousel-image" id="carousel-image" src="" alt="Unity Experiment">
-                </a>
+        <div class="project">
+            <h2 class="project-name">Game Development<span class="dropdown-arrow">▼</span></h2>
+            <div class="dropdown-content">
+                <div class="video-carousel">
+                    <div class="video-frame">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/sblFx198LTI" frameborder="0"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="video-frame">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/bb6bb0ZMqnI" frameborder="0"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="video-frame">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/ms9gQ040WoQ" frameborder="0"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="video-frame">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/6IH29HmjRYk" frameborder="0"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="project-description">
+                    <p>
+                        I have really enjoyed recreating classic games and developing my own games. I have used a
+                        variety of
+                        tools
+                        including Unity, Love2D and even Scratch. I quickly discovered that although making games is
+                        fun,
+                        graphical
+                        rendering and physics engines might be where the real excitement is at. Imagine the thrill of
+                        implementing
+                        an algorithm you have read about or converting formulae to code or the joy of eeking out every
+                        millisecond
+                        of performance.
+                    </p>
+                </div>
             </div>
         </div>
+        <div class="project">
+            <h2 class="project-name">Unity Experiments<span class="dropdown-arrow">▼</span></h2>
+            <div class="dropdown-content">
+                <div id="unity-section">
+                    <iframe id="unity-iframe"
+                        src="https://play.unity.com/webgl/1a69331e-6635-4f09-94c7-ce4691007d66?screenshot=true&amp;userID=6381410958363901bced5a9d&amp;embedType=detail"
+                        frameborder="0" allow="autoplay; fullscreen; vr" allowfullscreen="" allowvr=""
+                        mozallowfullscreen="true" width="1000" height="580" onmousewheel=""
+                        webkitallowfullscreen="true"></iframe>
+                </div>
+                <div class="carousel">
+                    <div class="carousel-container">
+                        <a href="https://play.unity.com/u/dphillip11">
+                            <img class="carousel-image" id="carousel-image"
+                                src="https://play-static.unity.com/20230131/p/images/0dce5e07-931e-4c69-8702-439679f067a5_Screenshot_20230129_185738.png"
+                                alt="Unity Experiment">
+                        </a>
+                    </div>
+                </div>
 
-        <div class="carousel-nav" id="carousel-nav">
-            <div class="carousel-nav-item">
-                <a href="">
-                    <img src="https://play-static.unity.com/20230131/p/images/0dce5e07-931e-4c69-8702-439679f067a5_Screenshot_20230129_185738.png"
-                        alt="Thumbnail 1">
-                </a>
-            </div>
-            <div class=" carousel-nav-item">
-                <a href="https://play.unity.com/p/63ae9c2ef4a7b80b5ab36901">
-                    <img src="https://play-static.unity.com/20221230/p/images/b30039db-988d-4631-acfc-c67e33106e95_Screenshot_2022_12_22_144529.png"
-                        alt="Thumbnail 2">
-                </a>
-            </div>
-            <div class="carousel-nav-item">
-                <a href="https://play.unity.com/p/63a35d81c7749603630aea60">
-                    <img src="https://play-static.unity.com/20221221/p/images/f7708782-47ee-475c-bd36-49b311f1475e_Screenshot_2022_12_07_164027.png"
-                        alt="Thumbnail 3">
-                </a>
-            </div>
-            <div class="carousel-nav-item">
-                <a href="https://play.unity.com/p/6398c82037f2ca0951f37fb5">
-                    <img src="https://play-static.unity.com/20221213/p/images/9355acba-a332-4ea8-a203-04455e3d581a_Screenshot_2022_12_13_194611.png"
-                        alt="Thumbnail 4">
-                </a>
-            </div>
-            <div class="carousel-nav-item">
-                <a href="https://play.unity.com/p/638b9f1b37f2ca01d8acb229">
-                    <img src="https://play-static.unity.com/20221203/p/images/ca2f6d42-9728-4e84-9348-7a32bb05271c_Screenshot_20221203_201603.png"
-                        alt="Thumbnail 5">
-                </a>
-            </div>
-            <div class="carousel-nav-item">
-                <a href="https://play.unity.com/p/6384da825836390be851f060">
-                    <img src="https://play-static.unity.com/20221128/p/images/6e84aa0d-f9e8-4f78-a91a-9503258ea49d_Screenshot_2022_11_28_170422.png"
-                        alt="Thumbnail 6">
-                </a>
-            </div>
-            <div class="carousel-nav-item">
-                <a href="https://play.unity.com/p/63836cf32c7fb000f82ab915">
-                    <img src="https://play-static.unity.com/20221127/p/images/d010edf3-d8a2-44a6-bcca-e54771931f98_Screenshot_2022_11_27_150626.png"
-                        alt="Thumbnail 7">
-                </a>
-            </div>
-            <div class="carousel-nav-item">
-                <a href="https://play.unity.com/p/6382469c2c7fb000f82a8444">
-                    <img src="https://play-static.unity.com/20221126/p/images/656aeae4-4b4e-406c-be4c-775b5a7115b2_Screenshot_2022_11_26_180431.png"
-                        alt="Thumbnail 8">
-                </a>
-            </div>
-            <div class="carousel-nav-item">
-                <a href="https://play.unity.com/p/6381eaf12c7fb000f82a73c7">
-                    <img src="https://play-static.unity.com/20221126/p/images/bea02083-2989-4526-af11-a3a6d3669aa7_Screenshot_2022_11_26_113700.png"
-                        alt="Thumbnail 9">
-                </a>
-            </div>
-            <div class="carousel-nav-item">
-                <a href="https://play.unity.com/p/638141632c7fb000f82a581a">
-                    <img src="https://play-static.unity.com/20221125/p/images/e15f65a4-33d6-47a0-879e-8c0b3ea8447c_Screenshot_2022_11_25_233038.png"
-                        alt="Thumbnail 10">
-                </a>
+                <div class="carousel-nav" id="carousel-nav">
+                    <div class="carousel-nav-item">
+                        <a href="">
+                            <img src="https://play-static.unity.com/20230131/p/images/0dce5e07-931e-4c69-8702-439679f067a5_Screenshot_20230129_185738.png"
+                                alt="Thumbnail 1">
+                        </a>
+                    </div>
+                    <div class=" carousel-nav-item">
+                        <a href="https://play.unity.com/p/63ae9c2ef4a7b80b5ab36901">
+                            <img src="https://play-static.unity.com/20221230/p/images/b30039db-988d-4631-acfc-c67e33106e95_Screenshot_2022_12_22_144529.png"
+                                alt="Thumbnail 2">
+                        </a>
+                    </div>
+                    <div class="carousel-nav-item">
+                        <a href="https://play.unity.com/p/63a35d81c7749603630aea60">
+                            <img src="https://play-static.unity.com/20221221/p/images/f7708782-47ee-475c-bd36-49b311f1475e_Screenshot_2022_12_07_164027.png"
+                                alt="Thumbnail 3">
+                        </a>
+                    </div>
+                    <div class="carousel-nav-item">
+                        <a href="https://play.unity.com/p/6398c82037f2ca0951f37fb5">
+                            <img src="https://play-static.unity.com/20221213/p/images/9355acba-a332-4ea8-a203-04455e3d581a_Screenshot_2022_12_13_194611.png"
+                                alt="Thumbnail 4">
+                        </a>
+                    </div>
+                    <div class="carousel-nav-item">
+                        <a href="https://play.unity.com/p/638b9f1b37f2ca01d8acb229">
+                            <img src="https://play-static.unity.com/20221203/p/images/ca2f6d42-9728-4e84-9348-7a32bb05271c_Screenshot_20221203_201603.png"
+                                alt="Thumbnail 5">
+                        </a>
+                    </div>
+                    <div class="carousel-nav-item">
+                        <a href="https://play.unity.com/p/6384da825836390be851f060">
+                            <img src="https://play-static.unity.com/20221128/p/images/6e84aa0d-f9e8-4f78-a91a-9503258ea49d_Screenshot_2022_11_28_170422.png"
+                                alt="Thumbnail 6">
+                        </a>
+                    </div>
+                    <div class="carousel-nav-item">
+                        <a href="https://play.unity.com/p/63836cf32c7fb000f82ab915">
+                            <img src="https://play-static.unity.com/20221127/p/images/d010edf3-d8a2-44a6-bcca-e54771931f98_Screenshot_2022_11_27_150626.png"
+                                alt="Thumbnail 7">
+                        </a>
+                    </div>
+                    <div class="carousel-nav-item">
+                        <a href="https://play.unity.com/p/6382469c2c7fb000f82a8444">
+                            <img src="https://play-static.unity.com/20221126/p/images/656aeae4-4b4e-406c-be4c-775b5a7115b2_Screenshot_2022_11_26_180431.png"
+                                alt="Thumbnail 8">
+                        </a>
+                    </div>
+                    <div class="carousel-nav-item">
+                        <a href="https://play.unity.com/p/6381eaf12c7fb000f82a73c7">
+                            <img src="https://play-static.unity.com/20221126/p/images/bea02083-2989-4526-af11-a3a6d3669aa7_Screenshot_2022_11_26_113700.png"
+                                alt="Thumbnail 9">
+                        </a>
+                    </div>
+                    <div class="carousel-nav-item">
+                        <a href="https://play.unity.com/p/638141632c7fb000f82a581a">
+                            <img src="https://play-static.unity.com/20221125/p/images/e15f65a4-33d6-47a0-879e-8c0b3ea8447c_Screenshot_2022_11_25_233038.png"
+                                alt="Thumbnail 10">
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+
     <section id="contact">
         <h1>Contact Me</h1>
         <!-- insert envelope icon -->
