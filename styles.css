@@ -248,9 +248,10 @@ only screen and (max-device-width: 768px) {
 }
 
 .project-description {
-    padding-top: 0;
+    padding: 30px;
     margin-top: 0;
-    color: #666;
+    color: #ffffff;
+    background-color: #6a6975;
     line-height: 1.6;
 }
 
