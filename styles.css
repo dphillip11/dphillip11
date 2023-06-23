@@ -5,6 +5,8 @@ h2,
 p {
     margin: 0;
     padding: 0;
+    font-size: 16px;
+    ;
 }
 
 h1 {
@@ -79,7 +81,8 @@ nav ul {
 
 nav ul li {
     display: inline;
-    margin-right: 10px;
+    margin-right: 20px;
+    font-size: 16px;
 }
 
 nav ul li a {
@@ -117,22 +120,74 @@ section {
     padding-bottom: 50px;
 }
 
+@media only screen and (max-width: 768px),
+only screen and (max-device-width: 768px) {
+    .about-content {
+        flex-direction: column;
+        align-items: center;
+        /* Center items horizontally */
+    }
+
+    .about-text {
+        order: 2;
+        margin-top: 20px;
+    }
+
+    .about-image {
+        order: 1;
+        margin-bottom: 20px;
+        align-self: center;
+        /* Center the image */
+    }
+
+    section {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+}
+
+#about-header {
+    padding-top: 120px;
+    padding-bottom: 30px;
+}
+
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.about-text {
+    flex: 1;
+    text-align: left;
+    margin-right: 0px;
+    padding-right: 0px;
+}
+
+.about-image {
+    flex: 1;
+    margin-left: 20px;
+    padding-top: 20px;
+    max-width: 300px;
+    /* Adjust the max-width as needed */
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+
 .light {
     background-color: #f5f5f5;
     color: #333;
 }
 
 .light div p,
-.light h1,
-h1,
-div h2,
-div div p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+.light h1 {
     background-color: #f5f5f5;
     color: #333;
 }
@@ -159,44 +214,11 @@ section p {
     padding-bottom: 10px;
 }
 
-#about {
-    padding-top: 100px;
-    display: flex;
-    align-items: flex-start;
-}
 
-.about-content {
-    display: flex;
-    align-items: flex-start;
-    gap: 0px;
-    /* Adjust the gap between the text and image as needed */
-}
 
-.about-text {
-    flex: 5 0;
-    text-align: left;
-    margin-right: 0px;
-    padding-right: 0px;
-}
 
-.about-text h1 {
-    text-align: center;
-    margin-right: 0px;
-    padding-right: 0px;
-}
 
-.about-image {
-    flex: 4 0 0;
-    margin-left: 0px;
-    padding-top: 100px;
-}
 
-.about-image img {
-    width: 50%;
-    margin-left: 0px;
-    /* Adjust the width of the image as needed */
-    height: auto;
-}
 
 
 
@@ -210,7 +232,7 @@ section p {
 
 .project-name {
     color: #333;
-    font-size: 28px;
+    font-size: 30px;
     padding: 20px;
     cursor: pointer;
     display: flex;
@@ -228,7 +250,7 @@ section p {
 
 .dropdown-arrow {
     transition: transform 0.8s ease;
-    font-size: 24px;
+    /* font-size: 24px; */
 }
 
 .dropdown-content {
@@ -299,10 +321,7 @@ a:hover {
     text-decoration: underline;
 }
 
-#contact {
-    padding: 100px;
-    padding-top: 10px;
-}
+
 
 .video-carousel {
     display: flex;
@@ -405,4 +424,71 @@ a:hover {
 
 .carousel-nav-item img:hover {
     transform: scale(1.2);
+}
+
+#contact {
+    padding: 100px;
+    padding-top: 50px;
+}
+
+.contact-card {
+    border: #555 1px solid;
+    font-family: 'Courier New', Courier, monospace;
+    margin: auto;
+    width: 300px;
+    height: 200px;
+    padding: 20px;
+    background: linear-gradient(45deg, hsla(0, 100%, 96%, 0.404), #fff0e241, #fefed69d, #e4fbe491, #e5e5fd84, #eadaf784, #fbe6fb73, #f3d3d374);
+    background-size: 400% 400%;
+    box-shadow: #333 1px 1px 1px;
+    transition: box-shadow 0.3s ease;
+    z-index: 1;
+}
+
+.contact-card:hover {
+    animation: pearlescent-animation 0.6s ease-out;
+    box-shadow: #333 5px 5px 10px;
+    transition: box-shadow 0.3s ease;
+}
+
+.contact-card p.transparent {
+    background-color: transparent;
+    padding: 10px;
+}
+
+.contact-card p.transparent a {
+    background-color: transparent;
+    color: rgb(68, 29, 243);
+    padding: 10px;
+}
+
+
+@keyframes pearlescent-animation {
+    0% {
+        background-position: 20% 50%;
+    }
+
+    50% {
+        background-position: 50% 30%;
+    }
+
+    100% {
+        background-position: 20% 50%;
+    }
+}
+
+@media only screen and (max-width: 768px),
+only screen and (max-device-width: 768px) {
+    h1 {
+        font-size: 30px;
+    }
+
+    section {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    #skills {
+        font-size: 16px;
+    }
 }
