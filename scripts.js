@@ -9,6 +9,12 @@ window.addEventListener('DOMContentLoaded', function () {
       adjustPageHeight();
     });
   });
+    
+    var leftArrow = document.querySelector('.left-arrow');
+var rightArrow = document.querySelector('.right-arrow');
+
+leftArrow.addEventListener('click', handlePrev);
+rightArrow.addEventListener('click', handleNext);
 
 function adjustPageHeight() {
   var dropdowns = document.querySelectorAll('.dropdown-content.open');
@@ -71,21 +77,21 @@ function adjustPageHeight() {
   const carouselImages = document.querySelectorAll('.carousel-nav-item img');
   let currentIndex = 0;
 
-  function handleNext() {
-    currentIndex = (currentIndex + 1) % carouselImages.length;
-    carouselImage.src = carouselImages[currentIndex].src;
-  }
-
   function changeImage(e) {
     handleNext();
     const targetImageSrc = e.target.src;
     carouselImage.src = targetImageSrc;
   }
 
-  function handlePrev() {
-    currentIndex = (currentIndex - 1 + carouselImages.length) % carouselImages.length;
-    carouselImage.src = carouselImages[currentIndex].src;
-  }
+  function handleNext() {
+  currentIndex = (currentIndex + 1) % carouselImages.length;
+  carouselImage.src = carouselImages[currentIndex].src;
+}
+
+function handlePrev() {
+  currentIndex = (currentIndex - 1 + carouselImages.length) % carouselImages.length;
+  carouselImage.src = carouselImages[currentIndex].src;
+}
 
   carouselImages.forEach(image => {
     image.addEventListener('mouseover', changeImage);

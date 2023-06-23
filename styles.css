@@ -6,7 +6,6 @@ p {
     margin: 0;
     padding: 0;
     font-size: 16px;
-    ;
 }
 
 h1 {
@@ -41,14 +40,12 @@ header {
     justify-content: flex-start;
     padding-left: 10%;
     color: #ffffff;
-    ;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 header h1 {
     background-color: #333;
     color: #ffffff;
-    ;
 }
 
 nav {
@@ -71,7 +68,7 @@ nav {
 }
 
 #skills ul {
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 nav ul {
@@ -128,7 +125,6 @@ only screen and (max-device-width: 768px) {
     .about-content {
         flex-direction: column;
         align-items: center;
-        /* Center items horizontally */
     }
 
     .about-text {
@@ -140,14 +136,12 @@ only screen and (max-device-width: 768px) {
         order: 1;
         margin-bottom: 20px;
         align-self: center;
-        /* Center the image */
     }
 
     section {
         padding-left: 20px;
         padding-right: 20px;
     }
-
 }
 
 #about-header {
@@ -164,8 +158,8 @@ only screen and (max-device-width: 768px) {
 .about-text {
     flex: 1;
     text-align: left;
-    margin-right: 0px;
-    padding-right: 0px;
+    margin-right: 0;
+    padding-right: 0;
 }
 
 .about-image {
@@ -173,7 +167,6 @@ only screen and (max-device-width: 768px) {
     margin-left: 20px;
     padding-top: 20px;
     max-width: 300px;
-    /* Adjust the max-width as needed */
 }
 
 .about-image img {
@@ -182,15 +175,7 @@ only screen and (max-device-width: 768px) {
     display: block;
 }
 
-
-
 .light {
-    background-color: #dddce1;
-    color: #333;
-}
-
-.light div p,
-.light h1 {
     background-color: #dddce1;
     color: #333;
 }
@@ -198,43 +183,13 @@ only screen and (max-device-width: 768px) {
 .dark {
     background-color: #6a6975;
     color: #ffffff;
-    ;
 }
-
-.dark div div p,
-div div h1,
-div div div div,
-h1 {
-    background-color: #6a6975;
-    color: #ffffff;
-    ;
-}
-
-h6 {
-    background-color: #6a6975;
-    color: #ffffff;
-    ;
-}
-
-section p {
-    padding-bottom: 10px;
-}
-
-
-
-
-
-
-
-
 
 .project {
     background-color: #fff;
-    margin-top: 20px 0;
-    margin-bottom: 20px;
+    margin: 20px 0;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
 }
-
 
 .project-name {
     color: #333;
@@ -256,7 +211,6 @@ section p {
 
 .dropdown-arrow {
     transition: transform 0.8s ease;
-    /* font-size: 24px; */
 }
 
 .dropdown-content {
@@ -267,15 +221,14 @@ section p {
 
 .dropdown-content.open {
     max-height: 1500px;
-    /* Adjust to a sufficient height */
 }
 
 .iframe-wrapper {
     width: 100%;
     height: auto;
     overflow: hidden;
-    padding-bottom: 0px;
-    margin-bottom: 0px;
+    padding-bottom: 0;
+    margin-bottom: 0;
     background-color: #6a6975;
 }
 
@@ -288,18 +241,15 @@ section p {
 #unity-iframe {
     position: center;
     width: 100%;
-
 }
 
 #unity {
     padding: 100px;
 }
 
-
-
 .project-description {
-    padding-top: 0px;
-    margin-top: 0px;
+    padding-top: 0;
+    margin-top: 0;
     color: #666;
     line-height: 1.6;
 }
@@ -326,8 +276,6 @@ a {
 a:hover {
     text-decoration: underline;
 }
-
-
 
 .video-carousel {
     display: flex;
@@ -365,7 +313,6 @@ a:hover {
     background-color: #555;
 }
 
-
 .image-container {
     width: 100%;
     height: 100%;
@@ -390,11 +337,11 @@ a:hover {
 }
 
 .carousel-container {
+    position: relative;
     width: 600px;
     height: 400px;
     padding: 0;
     margin: 0;
-    position: relative;
     transition: transform 0.5s ease-in-out;
 }
 
@@ -407,7 +354,7 @@ a:hover {
 .carousel-nav {
     display: flex;
     justify-content: center;
-    margin-top: 0px;
+    margin-top: 0;
     padding-bottom: 30px;
     background-color: #6a6975;
     overflow-x: auto;
@@ -435,7 +382,6 @@ a:hover {
 #contact {
     padding-top: 10px;
 }
-
 
 .contact-card {
     border: #555 1px solid;
@@ -470,7 +416,6 @@ a:hover {
     padding: 10px;
 }
 
-
 @keyframes pearlescent-animation {
     0% {
         background-position: 20% 50%;
@@ -485,18 +430,34 @@ a:hover {
     }
 }
 
-@media only screen and (max-width: 768px),
-only screen and (max-device-width: 768px) {
-    h1 {
-        font-size: 30px;
-    }
+.carousel {
+    position: relative;
+}
 
-    section {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
+.carousel-container {
+    width: 100%;
+    height: 600px;
+}
 
-    #skills {
-        font-size: 16px;
-    }
+.carousel-arrows {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.left-arrow {
+    left: 30px;
+}
+
+.right-arrow {
+    right: 10px;
 }
