@@ -121,38 +121,14 @@
                         intersections and the reflections are exact, this is suitable for such a reflective scene. The
                         scene is rendered using a raytracing algorithm, which is implemented in GLSL. The scene is
                         rendered in real-time, allowing for an interactive experience. The user can control the camera
-                        using the arrow keys and zoom in and out using the scroll wheel.
+                        using the arrow keys and zoom in and out using the scroll wheel.You can check out my
+                        <a href="https://www.shadertoy.com/view/ctBXDt">shader code here</a>.
                     </p>
                     <p>
                         The obvious benefit of using shaders and in the example WebGL is that it can be loaded directly
                         from an html file and run in the browser, furthermore the size of the image is dictated by
                         client and not file size, in fact, the code necessary to create it is only a few hundred lines
                         of text. I will be learning WebGPU as this seems to be the future of web based graphics APIs.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="project">
-            <h2 class="project-name">Mandelbrot Visualisation<span class="dropdown-arrow">▼</span></h2>
-            <div class="dropdown-content">
-                <div class="iframe-wrapper">
-                    <iframe src="Projects/mandelbrot.html" frameborder="0" width="100%" height="400px"></iframe>
-                </div>
-                <div class="project-description">
-                    <p>
-                        Although I have used webGl to create a demo in the browser, my work on Mandelbrot visualisation
-                        mostly took place on the CPU using Python and C. I implemented a variety of methods for
-                        rendering the M-set with varying degrees of efficiency. WebGl is very limited in terms of
-                        floating
-                        point accuracy which certainly is not the case for many of the other implementations.
-                        The blurriness that occurs as you zoom is an artifact of the limited precision of the floating
-                        point calculations.
-                    </p>
-                    <p>
-                        C was of course an excellent language for outputting still images and I actually used
-                        convolutional edge detection to automate this so that I could generate many images at increasing
-                        levels of zoom. Python initially seemed a little lethargic but withe the help of the Numba
-                        library and the use of the JIT compiler I was able to fare much better.
                     </p>
                 </div>
             </div>
@@ -167,16 +143,47 @@
                 </div>
                 <div class="project-description">
                     <p>
-                        The Game Engine project is a comprehensive game development framework that enables the creation
-                        of
-                        high-quality games. Developed using C++ and OpenGL, the engine provides features such as
-                        entity
-                        component system (ECS), GUI, 3D physics, and OBJ loading and rendering. It offers a powerful
-                        and
-                        flexible platform for game developers to bring their ideas to life.
+                        Building a game engine is a real test of organisation! My engine is written in <b>C++</b> and is
+                        underpinned by a <b>data structure</b>
+                        that is a combination of a <b>unordered map</b> and a <b>vector</b>. This allows for <b>fast
+                            iteration</b> over the
+                        objects in the scene and <b>fast lookups</b>, the trade off being removal of elements and
+                        probably usability to some extent.
+                        This forms the basis of my <b>entity component system</b>. <a
+                            href=https://github.com/dphillip11/Hashed_Vector_CPP>
+                            Check out my code here!</a>
                     </p>
-
+                    What else?
+                    <ul>
+                        <li>Developed a tool for parsing <code>.obj</code> files</li>
+                        <li>Implemented classes for managing shaders, models, and textures</li>
+                        <li>Implemented <b>resource loading</b> to ensure resources are loaded only once</li>
+                        <li>Added transform components with parenting to <b>create hierarchies</b> of game objects</li>
+                        <li>Implemented <b>oriented bounding box</b> colliders and sphere colliders</li>
+                        <li>Implemented <b>collision detection</b> using the <b>separating axis theorem</b> and
+                            <b>surface normal tests</b>
+                        </li>
+                        <li>Implemented <b>rigidbody</b> components for handling physical interactions, including
+                            <b>angular
+                                momentum</b>
+                        </li>
+                        <li>Created a <b>GUI</b> using the ImGUI library for creating and manipulating game objects</li>
+                        <li>Continued development and future plans include physically based rendering and scripting</li>
+                    </ul>
+                    <p>For a deeper dive into my code, you can look <a href="https://github.com/dphillip11/GameEngine">
+                            here</a>
+                        and <a href="https://github.com/dphillip11/3D_Physics">here</a>.
+                    </p>
+                    <p>
+                        Below is an example of the engine performing sphere collision detection and response on the
+                        <b>CPU</b>.
+                        I used an <b>octree</b> approach for <b>recursive spatial partitioning</b> and the collision
+                        detection
+                        is
+                        performed across a <b>number of threads</b>:
+                    </p>
                 </div>
+
                 <div class="iframe-wrapper">
                     <iframe width="100%" height="400px" src="https://www.youtube.com/embed/LdWEugD0k1E" frameborder="0"
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -207,17 +214,20 @@
                 </div>
                 <div class="project-description">
                     <p>
-                        I have really enjoyed recreating classic games and developing my own games. I have used a
-                        variety of
-                        tools
-                        including Unity, Love2D and even Scratch. I quickly discovered that although making games is
-                        fun,
-                        graphical
-                        rendering and physics engines might be where the real excitement is at. Imagine the thrill of
-                        implementing
-                        an algorithm you have read about or converting formulae to code or the joy of eeking out every
-                        millisecond
-                        of performance.
+                        I have completed a course in game development using Love2D and Unity recreated a variety of
+                        memorable games or important features including:
+                    <ul>
+                        <li>Pong</li>
+                        <li>Flappy Bird</li>
+                        <li>Breakout</li>
+                        <li>Bejeweled</li>
+                        <li>Legend of Zelda</li>
+                        <li>Super Mario Bros</li>
+                        <li>Angry Birds</li>
+                        <li>Portal</li>
+                    </ul>
+                    The course culminated in the developent of my own 2D platformer game with a level editor created in
+                    Love2D. <a href=https://github.com/dphillip11/TilePlatformerGame>Check out the repository here.</a>
                     </p>
                 </div>
             </div>
@@ -227,9 +237,10 @@
             <div class="dropdown-content">
                 <div class="carousel">
                     <div class="carousel-container">
-                        <img class="carousel-image" id="carousel-image"
-                            src="https://play-static.unity.com/20230131/p/images/0dce5e07-931e-4c69-8702-439679f067a5_Screenshot_20230129_185738.png"
-                            alt="Carousel Image">
+                        <a href="https://play.unity.com/u/dphillip11">
+                            <img class="carousel-image" id="carousel-image"
+                                src="https://play-static.unity.com/20230131/p/images/0dce5e07-931e-4c69-8702-439679f067a5_Screenshot_20230129_185738.png"
+                                alt="Carousel Image"></a>
                     </div>
                     <div class="carousel-arrows left-arrow">←</div>
                     <div class="carousel-arrows right-arrow">→</div>
@@ -297,6 +308,20 @@
                         </a>
                     </div>
                 </div>
+                <div class="project-description">
+                    <p>
+                        What you can witness here is a number of small projects I have completed using the Unity game
+                        engine. I have a good level of familiarity with the engine and recognise the power it has not
+                        just to create games but to rapidly prototype ideas. I have done a number of experiments
+                        utilising external sensors and lego motors including using a PID controller algorithm to
+                        calculate position based on accelerometer readings.
+                    </p>
+                    <p>But of course, there is always time for fun and games too, I continued my tile platformer game on
+                        the Unity Engine. You can try playing it below or you can interact with some of my other
+                        experiments on
+                        <a href="https://play.unity.com/u/dphillip11">the unity website</a>.
+                    </p>
+                </div>
                 <div id="unity-section">
                     <iframe id="unity-iframe"
                         src="https://play.unity.com/webgl/1a69331e-6635-4f09-94c7-ce4691007d66?screenshot=true&amp;userID=6381410958363901bced5a9d&amp;embedType=detail"
@@ -306,6 +331,37 @@
                 </div>
             </div>
         </div>
+        <div class="project">
+            <h2 class="project-name">Mandelbrot Visualisation<span class="dropdown-arrow">▼</span></h2>
+            <div class="dropdown-content">
+                <div class="iframe-wrapper">
+                    <iframe src="Projects/mandelbrot.html" frameborder="0" width="100%" height="400px"></iframe>
+                </div>
+                <div class="project-description">
+                    <p>
+                        This was my first foray into graphics programming as is something of a rite of passage for many.
+
+                        Although I have used webGl to create a demo in the browser, my work on Mandelbrot visualisation
+                        mostly took place on the CPU using Python and C. I implemented a variety of methods for
+                        rendering the M-set with varying degrees of efficiency. WebGl is very limited in terms of
+                        floating
+                        point accuracy which certainly is not the case for many of the other implementations.
+                        The blurriness that occurs as you zoom is an artifact of the limited precision of the floating
+                        point calculations.
+                    </p>
+                    <p>
+                        C was of course an excellent language for outputting still images and I actually used
+                        convolutional edge detection to automate this so that I could generate many images at increasing
+                        levels of zoom. Python initially seemed a little lethargic but withe the help of the Numba
+                        library and the use of the JIT compiler I was able to fare much better.
+                    </p>
+                    <p>
+                        I wrote a bit about it <a href="Projects/mandelbrot/index.html">here</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+
         <div id="contact"></div>
     </section>
 

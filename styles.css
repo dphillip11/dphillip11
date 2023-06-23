@@ -247,6 +247,10 @@ only screen and (max-device-width: 768px) {
     padding: 100px;
 }
 
+b {
+    color: #3c394d;
+}
+
 .project-description {
     padding: 30px;
     margin-top: 0;
