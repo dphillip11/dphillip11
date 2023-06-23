@@ -65,13 +65,31 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #fff;
+    display: inline-block;
+    position: relative;
+    color: #989898;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease-in-out;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background: #f5f4f4;
+    transition: width 0.3s;
 }
 
 nav ul li a:hover {
-    color: #ffd700;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
 }
 
 section {
