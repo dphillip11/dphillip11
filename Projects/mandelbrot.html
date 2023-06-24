@@ -95,7 +95,7 @@
 
         /*============== Creating a canvas ====================*/
         var canvas = document.getElementById('my_Canvas');
-        gl = canvas.getContext('experimental-webgl');
+        gl = canvas.getContext('webgl2');
 
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -231,8 +231,8 @@
         /*================ Shaders ====================*/
 
         // Vertex shader source code
-        var vertCode =
-            'attribute vec3 coordinates;' +
+        var vertCode = '#version 300 es\n' +
+            'in vec3 coordinates;' +
 
             'void main(void) {' +
             ' gl_Position = vec4(coordinates, 1.0);' +
@@ -251,8 +251,9 @@
         }
 
         //fragment shader source code
-        var fragCode = `
+        var fragCode = `#version 300 es
     precision highp float;
+    out vec4 fragColor;
     uniform vec2 canvasSize;
     uniform vec2 center;
     uniform float scale;
@@ -308,7 +309,7 @@
             }
         }
         vec3 color = colorize(m);
-        gl_FragColor = vec4(color, 1.0);
+        fragColor = vec4(color, 1.0);
     }
 `;
 
