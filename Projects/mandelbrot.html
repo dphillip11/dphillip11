@@ -101,7 +101,6 @@
         canvas.height = window.innerHeight;
         var scale = 4.0;
         var center = { x: 0.0, y: 0.0 };
-        var processing = false
 
         var modal = document.getElementById("infoModal");
         var btn = document.getElementById("infoButton");
@@ -125,22 +124,10 @@
             }
         }
 
-
-        function onClick(event) {
-            var rect = canvas.getBoundingClientRect();
-            var x = scale * (2.0 * (event.clientX - rect.left) / canvas.width - 1.0) + center.x;
-            var y = scale * (2.0 * (1.0 - (event.clientY - rect.top) / canvas.height) - 1.0) + center.y;
-            scale /= 2.0; // zoom in by a factor of 2
-            center.x = x;
-            center.y = y;
-            drawScene();
-        }
-
         window.addEventListener('resize', function () {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             gl.viewport(0, 0, canvas.width, canvas.height);
-            drawScene();
         });
 
         canvas.addEventListener('wheel', onWheel, false);
@@ -155,10 +142,9 @@
                 // zoom in
                 scale *= 0.9;
             }
-            drawScene();
         }
 
-        var speed = 0.1; // Change this value to control the speed of panning
+        var speed = 0.05; // Change this value to control the speed of panning
 
         window.addEventListener('keydown', function (event) {
             switch (event.key) {
@@ -175,14 +161,12 @@
                     center.x += speed * scale;
                     break;
             }
-            drawScene();
         }, false);
 
         var colorScheme = 0;
 
         document.getElementById("colorRange").addEventListener("input", function (event) {
-            colorScheme = parseFloat(event.target.value) * 6.283; // Multiply by 2*PI for a full range of hues
-            drawScene();
+            colorScheme = parseFloat(event.target.value) * 1000;
         });
 
         document.getElementById("colorRange").addEventListener("keydown", function (event) {
@@ -259,39 +243,41 @@
     uniform float scale;
     uniform float colorScheme;
 
-    const float max_iter = 500.0;
-    vec3 colorize(float m) {
-    float normalized = m / max_iter;
-    float hue = 2.0 * 3.1416 * (colorScheme + normalized);
-    float saturation = 1.0 - normalized;
-    float value = (m < max_iter) ? 1.0 : 0.0;
+    const float max_iter = 1000.0;
 
-    float c = value * saturation; // Chroma
-    float h = hue / (2.0 * 3.1416); // Hue
-    float x = c * (1.0 - abs(mod(h * 6.0, 2.0) - 1.0));
-    m = value - c;
+    vec2 trapCenter1 = vec2(0.2, 0.3);
+    vec2 trapCenter2 = vec2(-0.5, 0.1);
+    float trapRadius1 = 0.1;
+    float trapRadius2 = 0.2;
 
-    vec3 color;
+    vec3 trapColor1 = vec3(1., 1.0, 1.); // Red color for trap 1
+    vec3 trapColor2 = vec3( 0., 0., 0.); // Green color for trap 2
 
-    if (0.0 <= h && h < 1.0 / 6.0) {
-        color = vec3(c, x, 0.0);
-    } else if (1.0 / 6.0 <= h && h < 2.0 / 6.0) {
-        color = vec3(x, c, 0.0);
-    } else if (2.0 / 6.0 <= h && h < 3.0 / 6.0) {
-        color = vec3(0.0, c, x);
-    } else if (3.0 / 6.0 <= h && h < 4.0 / 6.0) {
-        color = vec3(0.0, x, c);
-    } else if (4.0 / 6.0 <= h && h < 5.0 / 6.0) {
-        color = vec3(x, 0.0, c);
-    } else {
-        color = vec3(c, 0.0, x);
+    float trapDistance(vec2 p, vec2 center, float radius) {
+        return length(p - center) - radius;
     }
 
-    color += vec3(m);
+    vec3 computeTraps(vec2 p) {
+        float dist1 = trapDistance(p, trapCenter1, trapRadius1);
+        float dist2 = trapDistance(p, trapCenter2, trapRadius2);
+        // Mix colors based on the distance
+        return mix(trapColor1, trapColor2, dist1 / (dist1 + dist2));
+    }
 
-    return color;
-}
-    
+    float COLORS = 15.;
+    vec3 colorize(float m, vec3 trapColor) {
+        float offset_r = 0.1*colorScheme + 0.;
+        float offset_g = 0.2*colorScheme + 3.14/6.; 
+        float offset_b = 0.3*colorScheme + 3.14/3.;
+        float increment = 3.1415 / (COLORS - 1.);
+        float R = 125. * (sin((increment * m) + offset_r)+1.);
+        float G = 125. * (sin((increment * m) + offset_b) +1.);
+        float B = 125. * (sin((increment * m) + offset_g)+1.);
+        vec3 color = vec3(R,G,B)/255.;
+
+        // Blend the trap color with the calculated color
+        return mix(color, trapColor, 0.3);
+    }
 
     void main(void) {
         vec2 c = scale * ((gl_FragCoord.xy/canvasSize.xx) - vec2(0.5, 0.5 *(canvasSize.y/canvasSize.x))) + center;
@@ -308,8 +294,12 @@
                 break;
             }
         }
-        vec3 color = colorize(m);
-        fragColor = vec4(color, 1.0);
+        vec3 trapColor = computeTraps(z);
+
+        vec3 color = colorize(m, trapColor);
+        color *= smoothstep(0.0, 0.02, trap); // Apply smooth shading based on the trap distance
+    
+    fragColor = vec4(color, 1.0);
     }
 `;
 
@@ -368,9 +358,6 @@
         var canvasSizeLocation = gl.getUniformLocation(shaderProgram, "canvasSize");
 
         function drawScene() {
-            if (processing)
-                return;
-            processing = true;
             gl.uniform2f(canvasSizeLocation, canvas.width, canvas.height);
             gl.uniform2f(centerLocation, center.x, center.y);
             gl.uniform1f(scaleLocation, scale);
@@ -391,7 +378,7 @@
 
             // Draw the triangle
             gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
-            processing = false;
+            requestAnimationFrame(drawScene);
         }
         drawScene();
 
