@@ -72,7 +72,7 @@
 
     <div id="topContainer">
         <div id="banner">Mandelbrot Visualisation</div>
-        <input type="range" id="colorRange" name="colorRange" min="0" max="0.1" step="0.001" value="0">
+        <input type="range" id="colorRange" name="colorRange" min="2" max="100" step="1" value="30">
     </div>
     <canvas width="1920" height="1080" id="my_Canvas"></canvas>
 
@@ -163,10 +163,10 @@
             }
         }, false);
 
-        var colorScheme = 0;
+        var colors = 0;
 
         document.getElementById("colorRange").addEventListener("input", function (event) {
-            colorScheme = parseFloat(event.target.value) * 1000;
+            colors = parseInt(event.target.value);
         });
 
         document.getElementById("colorRange").addEventListener("keydown", function (event) {
@@ -236,71 +236,83 @@
 
         //fragment shader source code
         var fragCode = `#version 300 es
-    precision highp float;
-    out vec4 fragColor;
-    uniform vec2 canvasSize;
-    uniform vec2 center;
-    uniform float scale;
-    uniform float colorScheme;
+precision highp float;
+out vec4 fragColor;
+uniform float iTime;
+uniform vec2 canvasSize;
+uniform vec2 center;
+uniform float scale;
+uniform float colorScheme;
+uniform float colors;   
+const float max_iter = 500.0;
 
-    const float max_iter = 1000.0;
+vec2 trapCenter1 = vec2(0.2, 0.3);
+vec2 trapCenter2 = vec2(-0.5, 0.1);
+float trapRadius1 = 0.1;
+float trapRadius2 = 0.2;
 
-    vec2 trapCenter1 = vec2(0.2, 0.3);
-    vec2 trapCenter2 = vec2(-0.5, 0.1);
-    float trapRadius1 = 0.1;
-    float trapRadius2 = 0.2;
 
-    vec3 trapColor1 = vec3(1., 1.0, 1.); // Red color for trap 1
-    vec3 trapColor2 = vec3( 0., 0., 0.); // Green color for trap 2
 
-    float trapDistance(vec2 p, vec2 center, float radius) {
-        return length(p - center) - radius;
+vec3 trapColor[3] = vec3[](
+    vec3(1., 0., 0.), // Red color for trap 1
+    vec3(0., 1., 0.), // Green color for trap 2
+    vec3(0., 0., 1.)  // Blue color for trap 3
+);
+
+vec3 computeTraps(vec2 z) {
+    vec2 traps[3] = vec2[](
+    vec2(0.2, 0.3), 
+    vec2(-0.5, 0.1),
+    vec2(sin(iTime), cos(iTime))
+);
+    vec3 color = vec3(0.0);
+    for(int i = 0; i < traps.length(); i++) {
+        vec2 trap = traps[i];
+        vec3 trapC = trapColor[i];
+        float dist = length(z - trap);
+        color += trapC / (1.0 + dist * dist); // color contribution based on the distance
     }
+    return color;
+}
 
-    vec3 computeTraps(vec2 p) {
-        float dist1 = trapDistance(p, trapCenter1, trapRadius1);
-        float dist2 = trapDistance(p, trapCenter2, trapRadius2);
-        // Mix colors based on the distance
-        return mix(trapColor1, trapColor2, dist1 / (dist1 + dist2));
-    }
+vec3 colorize(float m, vec3 trapColor) {
+    float offset_r = 0.1*colorScheme + 0.;
+    float offset_g = 0.2*colorScheme + 3.14/6.; 
+    float offset_b = 0.3*colorScheme + 3.14/3.;
+    float increment = 3.1415 / (colors - 1.);
+    float R = 125. * (sin((increment * m) + offset_r)+1.);
+    float G = 125. * (sin((increment * m) + offset_b) +1.);
+    float B = 125. * (sin((increment * m) + offset_g)+1.);
+    vec3 color = vec3(R,G,B)/255.;
 
-    float COLORS = 15.;
-    vec3 colorize(float m, vec3 trapColor) {
-        float offset_r = 0.1*colorScheme + 0.;
-        float offset_g = 0.2*colorScheme + 3.14/6.; 
-        float offset_b = 0.3*colorScheme + 3.14/3.;
-        float increment = 3.1415 / (COLORS - 1.);
-        float R = 125. * (sin((increment * m) + offset_r)+1.);
-        float G = 125. * (sin((increment * m) + offset_b) +1.);
-        float B = 125. * (sin((increment * m) + offset_g)+1.);
-        vec3 color = vec3(R,G,B)/255.;
+    // Blend the trap color with the calculated color
+    return mix(color, trapColor, 0.3);
+}
 
-        // Blend the trap color with the calculated color
-        return mix(color, trapColor, 0.3);
-    }
-
-    void main(void) {
-        vec2 c = scale * ((gl_FragCoord.xy/canvasSize.xx) - vec2(0.5, 0.5 *(canvasSize.y/canvasSize.x))) + center;
-        vec2 z = vec2(0.0, 0.0);
-        float m = 0.0;
-        float trap = 1.0;
-        for(int i = 0; i < int(max_iter); i++) {
-            float x = (z.x * z.x - z.y * z.y) + c.x;
-            float y = (2.0 * z.x * z.y) + c.y;
-            z = vec2(x, y);
-            if (dot(z, z) > 4.0) {
-                float nu = log2(log2(dot(z,z)));
-                m = float(i) + 1.0 - nu;
-                break;
-            }
+void main(void) {
+    vec2 c = scale * ((gl_FragCoord.xy/canvasSize.xx) - vec2(0.5, 0.5 *(canvasSize.y/canvasSize.x))) + center;
+    vec2 z = vec2(0.0, 0.0);
+    vec2 dz = vec2(0.0, 0.0);
+    float m = 0.0;
+    float trap = 1.0;
+    for(int i = 0; i < int(max_iter); i++) {
+        dz = 2.0 * vec2(z.x * dz.x - z.y * dz.y + 1.0, z.x * dz.y + z.y * dz.x);
+        float x = (z.x * z.x - z.y * z.y) + c.x;
+        float y = (2.0 * z.x * z.y) + c.y;
+        z = vec2(x, y);
+        if (dot(z, z) > 4.0) {
+            float nu = log2(log2(dot(z,z)));
+            m = float(i) + 1.0 - nu;
+            break;
         }
-        vec3 trapColor = computeTraps(z);
-
-        vec3 color = colorize(m, trapColor);
-        color *= smoothstep(0.0, 0.02, trap); // Apply smooth shading based on the trap distance
-    
-    fragColor = vec4(color, 1.0);
     }
+    vec3 trapColor = computeTraps(z);
+
+    vec3 color = colorize(m, trapColor);
+    color *= smoothstep(0.0, 0.02, trap); // Apply smooth shading based on the trap distance
+
+    fragColor = vec4(color, 1.0);
+}
 `;
 
 
@@ -356,12 +368,17 @@
         var scaleLocation = gl.getUniformLocation(shaderProgram, "scale");
         var colorSchemeLocation = gl.getUniformLocation(shaderProgram, "colorScheme");
         var canvasSizeLocation = gl.getUniformLocation(shaderProgram, "canvasSize");
+        var colorsLocation = gl.getUniformLocation(shaderProgram, "colors");
+        var timeLocation = gl.getUniformLocation(shaderProgram, "iTime");
 
         function drawScene() {
+            colorScheme = 100 * Math.sin(0.00005 * Date.now());
             gl.uniform2f(canvasSizeLocation, canvas.width, canvas.height);
-            gl.uniform2f(centerLocation, center.x, center.y);
             gl.uniform1f(scaleLocation, scale);
+            gl.uniform2f(centerLocation, center.x, center.y);
+            gl.uniform1f(colorsLocation, colors);
             gl.uniform1f(colorSchemeLocation, colorScheme);
+            gl.uniform1f(timeLocation, Date.now());
             /*=========Drawing the triangle===========*/
 
             // Clear the canvas
