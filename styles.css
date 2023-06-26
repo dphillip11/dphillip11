@@ -187,7 +187,7 @@ only screen and (max-device-width: 768px) {
 
 .dark {
     background-color: #6a6975;
-    color: #ffffff;
+    color: #ebe4e4;
 }
 
 .project {
@@ -255,7 +255,7 @@ only screen and (max-device-width: 768px) {
 
 b {
     color: #ffffff;
-    text-shadow: 2px 2px 0px #000000;
+    font-weight: bolder;
 }
 
 .project-description {
@@ -294,6 +294,10 @@ a:hover {
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
+}
+
+#game-engine-features {
+    text-align: left;
 }
 
 .video-frame {
