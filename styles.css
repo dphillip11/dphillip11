@@ -180,6 +180,11 @@ only screen and (max-device-width: 768px) {
     color: #333;
 }
 
+.light b {
+    color: #333;
+    text-shadow: none;
+}
+
 .dark {
     background-color: #6a6975;
     color: #ffffff;
@@ -252,7 +257,8 @@ only screen and (max-device-width: 768px) {
 }
 
 b {
-    color: #3c394d;
+    color: #ffffff;
+    text-shadow: 2px 2px 0px #000000;
 }
 
 .project-description {
