@@ -220,13 +220,10 @@ only screen and (max-device-width: 768px) {
 
 .dropdown-content {
     overflow: hidden;
-    max-height: 0;
+    display: none;
     transition: max-height 0.3s ease-in-out;
 }
 
-.dropdown-content.open {
-    max-height: 1500px;
-}
 
 #game-list {
     list-style: none;

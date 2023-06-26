@@ -1,43 +1,24 @@
 window.addEventListener('DOMContentLoaded', function () {
-  var projectNames = document.querySelectorAll('.project-name');
+ 
+  var coll = document.getElementsByClassName("project-name");
+var i;
 
-  projectNames.forEach(function (name) {
-    var dropdownContent = name.nextElementSibling;
-
-    name.addEventListener('click', function () {
-      dropdownContent.classList.toggle('open');
-      adjustPageHeight();
-    });
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
   });
-    
+}
     var leftArrow = document.querySelector('.left-arrow');
 var rightArrow = document.querySelector('.right-arrow');
 
 leftArrow.addEventListener('click', handlePrev);
 rightArrow.addEventListener('click', handleNext);
-
-function adjustPageHeight() {
-  var dropdowns = document.querySelectorAll('.dropdown-content.open');
-  var contactCard = document.querySelector('.contact-card');
-  var pageHeight = Math.max(
-    document.body.scrollHeight,
-    document.body.offsetHeight,
-    document.documentElement.clientHeight,
-    document.documentElement.scrollHeight,
-    document.documentElement.offsetHeight
-  );
-
-  dropdowns.forEach(function (dropdown) {
-    pageHeight += dropdown.scrollHeight;
-  });
-
-  if (contactCard) {
-    var contactCardOffset = contactCard.getBoundingClientRect().top + contactCard.offsetHeight;
-    pageHeight = Math.max(pageHeight, contactCardOffset + 20); // Adjusted by 20 pixels
-  }
-
-  document.body.style.height = pageHeight + 'px';
-}
 
   var iframeWrappers = document.querySelectorAll('.iframe-wrapper');
 
