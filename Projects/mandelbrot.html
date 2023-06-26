@@ -72,7 +72,7 @@
 
     <div id="topContainer">
         <div id="banner">Mandelbrot Visualisation</div>
-        <input type="range" id="colorRange" name="colorRange" min="0" max="100" step="1" value="12">
+        <input type="range" id="colorRange" name="colorRange" min="0" max="100" step="1" value="32">
 
     </div>
     <canvas width="1920" height="1080" id="my_Canvas"></canvas>
@@ -101,7 +101,7 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         var scale = 0.5;
-        var offset = { x: 0.0, y: 0.0 };
+        var offset = { x: -0.5, y: 0.0 };
 
         var modal = document.getElementById("infoModal");
         var btn = document.getElementById("infoButton");
