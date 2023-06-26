@@ -72,7 +72,8 @@
 
     <div id="topContainer">
         <div id="banner">Mandelbrot Visualisation</div>
-        <input type="range" id="colorRange" name="colorRange" min="6" max="100" step="1" default="6">
+        <input type="range" id="colorRange" name="colorRange" min="0" max="100" step="1" value="12">
+
     </div>
     <canvas width="1920" height="1080" id="my_Canvas"></canvas>
 
@@ -99,8 +100,8 @@
 
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        var scale = 4.0;
-        var center = { x: 0.0, y: 0.0 };
+        var scale = 1.0;
+        var offset = { x: 0.0, y: 0.0 };
 
         var modal = document.getElementById("infoModal");
         var btn = document.getElementById("infoButton");
@@ -128,6 +129,7 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             gl.viewport(0, 0, canvas.width, canvas.height);
+            requestAnimationFrame(drawScene);
         });
 
         canvas.addEventListener('wheel', onWheel, false);
@@ -142,32 +144,38 @@
                 // zoom in
                 scale *= 0.9;
             }
+            requestAnimationFrame(drawScene);
         }
 
-        var speed = 5; // Change this value to control the speed of panning
+        var speed = 0.5; // Change this value to control the speed of panning
 
         window.addEventListener('keydown', function (event) {
+            modified_scale = scale;
             switch (event.key) {
                 case 'ArrowUp':
-                    center.y += speed * scale;
+                    offset.y += speed * modified_scale;
                     break;
                 case 'ArrowDown':
-                    center.y -= speed * scale;
+                    offset.y -= speed * modified_scale;
                     break;
                 case 'ArrowLeft':
-                    center.x -= speed * scale;
+                    offset.x -= speed * modified_scale;
                     break;
                 case 'ArrowRight':
-                    center.x += speed * scale;
+                    offset.x += speed * modified_scale;
                     break;
             }
+            requestAnimationFrame(drawScene);
         }, false);
 
-        var colors = 0;
+        var colorScheme = 0;
 
         document.getElementById("colorRange").addEventListener("input", function (event) {
-            colors = parseInt(event.target.value);
+            colorScheme = parseInt(event.target.value);
+            requestAnimationFrame(drawScene);
         });
+
+        colorScheme = parseInt(document.getElementById("colorRange").value);
 
         document.getElementById("colorRange").addEventListener("keydown", function (event) {
             if (event.key.startsWith("Arrow")) {
@@ -243,10 +251,8 @@ uniform vec2 canvasSize;
 uniform vec2 offset;
 uniform float scale;
 uniform float colorScheme;
-uniform float colors;   
+float colors = 60.;   
 const float max_iter = 500.0;
-
-vec2 center = vec2(-1.411225,0.);
 vec2 trapCenter1 = vec2(0.2, 0.3);
 vec2 trapCenter2 = vec2(-0.5, 0.1);
 float trapRadius1 = 0.1;
@@ -308,27 +314,15 @@ float mandelbrot_perturbation( vec2 c, vec2 dc, out vec2 z_out )
     z_out = z;
     return n;
 }
-vec2 rotate(vec2 v, float a) {
-    float s = sin(a);
-    float c = cos(a);
-    return vec2(c * v.x - s * v.y, s * v.x + c * v.y);
-}
-
 
 void main() {
-    vec2 fragCoord = gl_FragCoord.xy;
-    vec2  p = (2.0*fragCoord-canvasSize.xy)/canvasSize.y;
-    p-= offset;
-    //float zoom = pow(2., 54. * -(1.+ sin(iTime * 0.05))+ 1.);
-    float zoom = scale;
-    vec2 c;
-    c=vec2(-1.41,0.);
+    vec2 fragCoord = gl_FragCoord.xy / canvasSize.y;  // Normalize to [0, 1]
+    vec2 p = fragCoord * 2.0 - 1.0;  // Convert to [-1, 1]
+    p = p * scale + offset;  // Apply scale and offset
 
-    // Rotate
-    p = rotate(p, iTime*0.1);
+    vec2 c= vec2(-1.,0.);  
 
-    // mandelbrot   
-    vec2 dc = p*zoom;
+    vec2 dc = p;
     vec2 z;
     float m = mandelbrot_perturbation(c, dc, z);
     
@@ -388,23 +382,18 @@ void main() {
         // Enable the attribute
         gl.enableVertexAttribArray(coord);
 
-        var centerLocation = gl.getUniformLocation(shaderProgram, "offset");
+        var offsetLocation = gl.getUniformLocation(shaderProgram, "offset");
         var scaleLocation = gl.getUniformLocation(shaderProgram, "scale");
         var colorSchemeLocation = gl.getUniformLocation(shaderProgram, "colorScheme");
         var canvasSizeLocation = gl.getUniformLocation(shaderProgram, "canvasSize");
-        var colorsLocation = gl.getUniformLocation(shaderProgram, "colors");
-        var timeLocation = gl.getUniformLocation(shaderProgram, "iTime");
-
+        var processing = false;
         function drawScene() {
-            colorScheme = 100 * Math.sin(0.00005 * Date.now());
+
             gl.uniform2f(canvasSizeLocation, canvas.width, canvas.height);
             gl.uniform1f(scaleLocation, scale);
-            gl.uniform2f(centerLocation, -center.x, -center.y);
-            gl.uniform1f(colorsLocation, colors);
+            gl.uniform2f(offsetLocation, offset.x, offset.y);
             gl.uniform1f(colorSchemeLocation, colorScheme);
-            gl.uniform1f(timeLocation, Date.now());
             /*=========Drawing the triangle===========*/
-
             // Clear the canvas
             gl.clearColor(1, 0.5, 0.5, 0.9);
 
@@ -419,8 +408,9 @@ void main() {
 
             // Draw the triangle
             gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
-            requestAnimationFrame(drawScene);
         }
+
+
         drawScene();
 
     </script>
