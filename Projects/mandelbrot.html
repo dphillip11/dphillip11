@@ -100,7 +100,7 @@
 
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        var scale = 1.0;
+        var scale = 0.5;
         var offset = { x: 0.0, y: 0.0 };
 
         var modal = document.getElementById("infoModal");
@@ -386,9 +386,11 @@ void main() {
         var scaleLocation = gl.getUniformLocation(shaderProgram, "scale");
         var colorSchemeLocation = gl.getUniformLocation(shaderProgram, "colorScheme");
         var canvasSizeLocation = gl.getUniformLocation(shaderProgram, "canvasSize");
+        var timeLocation = gl.getUniformLocation(shaderProgram, "iTime");
         var processing = false;
         function drawScene() {
 
+            gl.uniform1f(timeLocation, Date.now());
             gl.uniform2f(canvasSizeLocation, canvas.width, canvas.height);
             gl.uniform1f(scaleLocation, scale);
             gl.uniform2f(offsetLocation, offset.x, offset.y);
@@ -411,10 +413,10 @@ void main() {
         }
 
 
-        drawScene();
+        requestAnimationFrame(drawScene);
 
         window.addEventListener('DOMContentLoaded', function () {
-            drawScene();
+            requestAnimationFrame(drawScene);
         });
 
     </script>

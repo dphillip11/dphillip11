@@ -96,4 +96,15 @@ function handlePrev() {
   carouselImages.forEach(image => {
     image.addEventListener('mouseover', changeImage);
   });
+
+   var iframe = document.getElementById("mandelbrot-iframe");
+  var dropdown = document.querySelector(".project-name");
+    dropdown.addEventListener("click", function() {
+      iframe.src = iframe.src;
+       iframe.contentWindow.requestAnimationFrame(drawScene);
+    });
+  iframe.addEventListener("load", function() {
+    iframe.contentWindow.requestAnimationFrame(drawScene);
+  });
+
 });
