@@ -190,6 +190,10 @@ only screen and (max-device-width: 768px) {
     color: #ebe4e4;
 }
 
+blue {
+    color: blue;
+}
+
 .project {
     background-color: #fff;
     margin: 20px 0;
@@ -424,6 +428,8 @@ a:hover {
 .contact-card p.transparent {
     background-color: transparent;
     padding: 10px;
+    padding-bottom: 5px;
+    text-align: left;
 }
 
 .contact-card p.transparent a {
